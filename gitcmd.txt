@@ -1,0 +1,46 @@
+============================
+  Git 指令速查（单人项目）
+============================
+
+一、首次搭建（每项目一次）
+--------------------------
+git init                                        # 初始化本地仓库
+git add .                                       # 把所有文件加入暂存区
+git commit -m "初始提交"                         # 本地提交（必须先 commit 才能 push）
+git remote add origin <GitHub仓库地址>           # 关联远程仓库（HTTPS 或 SSH）
+git branch -M main                              # 确保分支名为 main
+git push -u origin main                         # 推送到 GitHub（-u 记住上游，后续只需 git push）
+
+
+二、日常修改（每次写完代码）
+--------------------------
+git add .                                      # 暂存所有改动
+git commit -m "做了什么"                        # 提交到本地
+git push                                       # 推到 GitHub
+
+
+三、查看状态与改动
+--------------------------
+git status                                    # 当前状态（改了啥、暂存了啥、没跟踪啥）
+git diff                                      # 还没 add 的修改内容
+git diff --staged                             # 已经 add 但还没 commit 的修改
+git log --oneline                             # 提交历史（简洁版，每个 commit 一行）
+git log                                       # 提交历史（完整版）
+
+
+四、撤销操作
+--------------------------
+git checkout -- <文件名>                        # 撤销某个文件的修改（回到上次 commit 的状态）
+git reset HEAD <文件名>                         # 把已 add 的文件从暂存区撤下（修改保留）
+git commit --amend -m "新的提交信息"             # 修改上一次 commit 的说明文字
+
+
+五、回到过去版本
+--------------------------
+git log --oneline                             # 找到目标 commit 的哈希值（如 a1b2c3d）
+git checkout <哈希值> -- <文件名>               # 把某个文件恢复到指定版本
+
+
+六、换电脑后拉取项目
+--------------------------
+git clone <GitHub仓库地址>                      # 把远程仓库完整拉下来
